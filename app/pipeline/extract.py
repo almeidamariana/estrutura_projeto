@@ -12,18 +12,18 @@ Função para ler e extrair os arquivos em Excel
 type: input_folder: str (caminho da pasta)
 """
 
-path = 'data/input'
+#path = 'data/input'
 
 def extract_from_excel(path: str) -> List[pd.DataFrame]:
     all_files = glob.glob(os.path.join(path, "*.xlsx"))
 
-    df_list = []
+    data_frame_list = []
     for file in all_files:
         data = pd.read_excel(file)
-        df_list.append(data)
+        data_frame_list.append(data)
 
-    return df_list
+    return data_frame_list
 
 if __name__ == "__main__":
-    df_list = extract_from_excel(path)
-    print(df_list)
+    data_frame_list = extract_from_excel(path)
+    print(data_frame_list)
