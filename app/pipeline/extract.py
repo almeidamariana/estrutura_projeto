@@ -12,7 +12,7 @@ Função para ler e extrair os arquivos em Excel
 type: input_folder: str (caminho da pasta)
 """
 
-#path = 'data/input'
+path = 'data/input'
 
 def extract_from_excel(path: str) -> List[pd.DataFrame]:
     all_files = glob.glob(os.path.join(path, "*.xlsx"))
