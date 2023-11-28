@@ -69,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#welcome-to-mkdocs" class="md-skip">
+        <a href="#projeto-de-etl" class="md-skip">
           Ir para o conteúdo
         </a>
       
@@ -105,7 +105,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Welcome to MkDocs
+              Projeto de ETL
             
           </span>
         </div>
@@ -229,63 +229,15 @@
         
       
       
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Welcome to MkDocs
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
       <a href="." class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
-    Welcome to MkDocs
+    Projeto de ETL
   </span>
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Índice">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Índice
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#commands" class="md-nav__link">
-    <span class="md-ellipsis">
-      Commands
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#project-layout" class="md-nav__link">
-    <span class="md-ellipsis">
-      Project layout
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
       
     </li>
   
@@ -311,32 +263,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Índice
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#commands" class="md-nav__link">
-    <span class="md-ellipsis">
-      Commands
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#project-layout" class="md-nav__link">
-    <span class="md-ellipsis">
-      Project layout
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -353,21 +279,163 @@
   
 
 
-<h1 id="welcome-to-mkdocs">Welcome to MkDocs</h1>
-<p>For full documentation visit <a href="https://www.mkdocs.org">mkdocs.org</a>.</p>
-<h2 id="commands">Commands</h2>
+<h1 id="projeto-de-etl">Projeto de ETL</h1>
+<p>Estruturação um projeto de dados do zero: extração, transformação e carregamento. Foram aplicadas técnicas de refatorização, melhorando a qualidade do código e otimizando a performance.</p>
+<p>Aqui foi possível:</p>
 <ul>
-<li><code>mkdocs new [dir-name]</code> - Create a new project.</li>
-<li><code>mkdocs serve</code> - Start the live-reloading docs server.</li>
-<li><code>mkdocs build</code> - Build the documentation site.</li>
-<li><code>mkdocs -h</code> - Print help message and exit.</li>
+<li>entender a estrutura padrão de projetos, com a organização dos diretórios, funções e módulos, documentação e testes;</li>
+<li>compreender ferramentas de desenvolvimento como PIP e Poetry;</li>
+<li>realizar testes unitários utilizando o Pytest;</li>
+<li>fazer o versionamento com Git e Github</li>
+<li><strong>decifrar o que cada arquivo representa</strong> kkk</li>
+<li>documentar todo o projeto usando o Mkdocs</li>
 </ul>
-<h2 id="project-layout">Project layout</h2>
-<pre><code>mkdocs.yml    # The configuration file.
-docs/
-    index.md  # The documentation homepage.
-    ...       # Other markdown pages, images and other files.
-</code></pre>
+<h1 id="estrutura-do-projeto">Estrutura do projeto</h1>
+<pre class="mermaid"><code>graph TB
+    A[Múltiplos arquivos excel] --&gt; B(Extract: extract_from_excel)
+    B --&gt; |Gerar uma lista de dataframes| C(Transformation: consolidate_dataframes)
+    C --&gt; |Gerar um dataframe consolidado| D(Load: converte para excel)
+    D --&gt; |Salva o consolidado em excel| E(Pasta output: um único arquivo em excel)</code></pre>
+<h1 id="funcoes-e-modulos-do-projeto">Funções e módulos do projeto</h1>
+<h3 id="funcao-de-extracao-extract">Função de extração (extract)</h3>
+
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<a id="app.pipeline.extract.extract_from_excel"></a>
+  <div class="doc doc-contents first">
+  
+      <p>Função para ler e extrair os arquivos em Excel</p>
+<p>type: input_folder: str (caminho da pasta).</p>
+
+          <details class="quote">
+            <summary>Source code in <code>app\pipeline\extract.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">extract_from_excel</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Função para ler e extrair os arquivos em Excel</span>
+
+<span class="sd">    type: input_folder: str (caminho da pasta).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">all_files</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;*.xlsx&#39;</span><span class="p">))</span>
+
+    <span class="n">data_frame_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">all_files</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+        <span class="n">data_frame_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">data_frame_list</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div><h3 id="funcao-de-transformacao-transform-de-dados">Função de transformação (transform) de dados</h3>
+
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<a id="app.pipeline.transform.contact_data_frames"></a>
+  <div class="doc doc-contents first">
+  
+      <p>Função para transformar uma lista de dataframes em um único dataframe.</p>
+
+          <details class="quote">
+            <summary>Source code in <code>app\pipeline\transform.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">contact_data_frames</span><span class="p">(</span><span class="n">data_frame_list</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Função para transformar uma lista de dataframes em um único dataframe.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">data_frame_list</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div><h3 id="funcao-de-carregamento-load-de-dados">Função de carregamento (load) de dados</h3>
+
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<a id="app.pipeline.load.load_excel"></a>
+  <div class="doc doc-contents first">
+  
+      <p>receber um dataframe e salvar como excel</p>
+<p>args:
+data_frame (pd.DataFrame): dataframe a ser salvo como excel
+output_path (str): caminho onde o arquivo será salvo
+file_name (str): nome do arquivo a ser salvo</p>
+<p>return: "Arquivo salvo com sucesso."</p>
+
+          <details class="quote">
+            <summary>Source code in <code>app\pipeline\load.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">load_excel</span><span class="p">(</span>
+    <span class="n">data_frame</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">output_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">file_name</span><span class="p">:</span> <span class="nb">str</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    receber um dataframe e salvar como excel</span>
+
+<span class="sd">    args:</span>
+<span class="sd">    data_frame (pd.DataFrame): dataframe a ser salvo como excel</span>
+<span class="sd">    output_path (str): caminho onde o arquivo será salvo</span>
+<span class="sd">    file_name (str): nome do arquivo a ser salvo</span>
+
+<span class="sd">    return: &quot;Arquivo salvo com sucesso.&quot;</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">output_path</span><span class="p">):</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">output_path</span><span class="p">)</span>
+
+    <span class="n">data_frame</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">output_path</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">file_name</span><span class="si">}</span><span class="s1">.xlsx&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s1">&#39;Arquivo salvo com sucesso&#39;</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div>
 
 
 
