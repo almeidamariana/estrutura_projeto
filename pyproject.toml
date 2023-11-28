@@ -21,6 +21,7 @@ blue = "^0.9.1"
 pydocstyle = "^6.3.0"
 pip-audit = "^2.6.1"
 taskipy = "^1.12.2"
+mermaid = "^0.3.2"
 
 
 [build-system]
