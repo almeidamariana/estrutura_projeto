@@ -7,9 +7,9 @@ Aqui foi possível:
 * entender a estrutura padrão de projetos, com a organização dos diretórios, funções e módulos, documentação e testes;
 * compreender ferramentas de desenvolvimento como PIP e Poetry;
 * realizar testes unitários utilizando o Pytest;
-* fazer o versionamento com Git e Github
-* **decifrar o que cada arquivo representa** kkk
-* documentar todo o projeto usando o Mkdocs
+* fazer o versionamento com Git e Github;
+* compreender o que cada arquivo do projeto representa;
+* documentar o projeto usando o Mkdocs.
 
 # Estrutura do projeto
 
