@@ -12,7 +12,7 @@ Aqui foi possível:
 * realizar testes unitários utilizando o Pytest;
 * fazer o versionamento com Git e Github;
 * compreender o que cada arquivo do projeto representa;
-* documentar o projeto usando o Mkdocs. 
+* documentar o projeto usando o Mkdocs. [Clique aqui para acessar a documentação](https://almeidamariana.github.io/estrutura_projeto/)
 
 
 ### Passo a passo para instalação e configuração
